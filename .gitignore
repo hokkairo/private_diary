@@ -3,3 +3,10 @@
 
 # Pythonのコンパイルファイル
 __pycache__
+
+# ログファイル
+*.log
+
+# 不要ファイル
+.DS_Store
+Thumbs.db

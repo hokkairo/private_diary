@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Djangoプロジェクトの絶対パスを指定
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -71,6 +72,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'private_diary.wsgi.application'
+
+# BASE_DIRで指定した絶対パスのもとにstaticファイルがあることを示している
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 # Database

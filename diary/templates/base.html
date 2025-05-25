@@ -1,0 +1,73 @@
+<!-- loadタグを使いstaticタグを利用できるようにしている -->
+{% load static %}
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- 各ページのテンプレートでタイトルを埋め込む -->
+        <title>{% block title %}{% endblock %}</title>
+        <!-- hrefでstaticタグを使って静的ファイルのパスを相対パスで記述 -->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- hrefでstaticタグを使って静的ファイルのパスを相対パスで記述 -->
+        <link href="{% static 'css/one-page-wonder.css' %}" rel="stylesheet" />
+
+        <!-- My style -->
+        <!-- hrefでstaticタグを使ってmystyle.cssを読み込むためのパスを相対パスで記述 -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+        <!-- 各ページのテンプレートでページ固有のhead情報を埋め込むための記述 -->
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        <!-- フッターを最下部に固定するために利用するdivを追加 -->
+        <div id="wrapper">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+                <div class="container px-5">
+                    <!-- ナビゲーションバーに表示するPRIVATE DIARYにトップページのリンクを貼付
+                     diary:indexはdiaryアプリケーションにあるurls.pyでindexという名前のルーティングを参照する -->
+                    <a class="navbar-brand" href="{% url 'diary:index' %}">PRIVAET DIARY</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <!-- ナビゲーションバーのリンクがクリックされた時に文字色を変えるBootstrapによる効果を出すためにblockタグを記述 -->
+                                <a class="nav-link {% block active_inquiry %}{% endblock %}" href="#">INQUIRY</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="#">Sing Up</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 各ページのテンプレートで必要に応じてヘッダーを埋め込むための記述
+             blockタグにheaderという名前を付けて他のblockタグと区別する -->
+            {% block header %}{% endblock %}
+
+            <!-- 各ページのテンプレートでコンテンツを埋め込むための記述
+             blockタグにcontentsという名前を付けて他のblockタグと区別する -->
+            {% block contents %}{% endblock %}
+
+            <!-- Footer-->
+            <footer class="py-5 bg-black">
+                <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2023</p></div>
+            </footer>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </body>
+</html>
