@@ -43,7 +43,7 @@
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <!-- ナビゲーションバーのリンクがクリックされた時に文字色を変えるBootstrapによる効果を出すためにblockタグを記述 -->
-                                <a class="nav-link {% block active_inquiry %}{% endblock %}" href="#">INQUIRY</a>
+                                <a class="nav-link {% block active_inquiry %}{% endblock %}" href="{% url 'diary:inquiry' %}">INQUIRY</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ms-auto">
