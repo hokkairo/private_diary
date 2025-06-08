@@ -58,6 +58,22 @@
              blockタグにheaderという名前を付けて他のblockタグと区別する -->
             {% block header %}{% endblock %}
 
+            {% if messages %}
+            <div class="container my-div-style">
+                <div class="row">
+                    <ul class="messages" style="list-style: none;">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                            {{ message }}
+                        </li>
+                        {% endfor %}
+                    </il>
+                </div>
+            </div>
+            {% endif %}
+
+            
+
             <!-- 各ページのテンプレートでコンテンツを埋め込むための記述
              blockタグにcontentsという名前を付けて他のblockタグと区別する -->
             {% block contents %}{% endblock %}
